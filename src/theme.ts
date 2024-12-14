@@ -1,6 +1,3 @@
-import lightBg from './assets/bg.svg';
-import darkBg from './assets/darkBg.svg';
-
 export interface Theme {
   appTitleColor: string;
   backgroundImage: string;
@@ -31,7 +28,7 @@ export interface Theme {
 
 export const lightTheme: Theme = {
   appTitleColor: '#2F5D8A',
-  backgroundImage: lightBg,
+  backgroundImage: `${import.meta.env.BASE_URL}bg.svg`,
   backgroundGradient: {
     color1: '#F9FFFF',
     color2: '#38C8E6',
@@ -59,7 +56,7 @@ export const lightTheme: Theme = {
 
 export const darkTheme: Theme = {
   appTitleColor: '#2F5D8A',
-  backgroundImage: darkBg,
+  backgroundImage: `${import.meta.env.BASE_URL}darkBg.svg`,
   backgroundGradient: {
     color1: '#031027',
     color2: '#02101D',
