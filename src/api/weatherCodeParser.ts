@@ -4,25 +4,25 @@ import i18next from 'i18next';
 const WMOCodeKeys: Record<number, { mainKey: string; descriptionKey: string }> = {
   0: { mainKey: "weather.clear", descriptionKey: "weather.clear.description" },
   1: { mainKey: "weather.mainlyClear", descriptionKey: "weather.mainlyClear.description" },
-  2: { mainKey: "weather.partlyCloudy", descriptionKey: "weather.partlyCloudy_description" },
-  3: { mainKey: "weather.overcast", descriptionKey: "weather.overcast_description" },
-  45: { mainKey: "weather.fog", descriptionKey: "weather.fog_description" },
-  48: { mainKey: "weather.rimeFog", descriptionKey: "weather.rimeFog_description" },
-  51: { mainKey: "weather.drizzle_light", descriptionKey: "weather.drizzle_light" },
-  53: { mainKey: "weather.drizzle_moderate", descriptionKey: "weather.drizzle_moderate" },
-  55: { mainKey: "weather.drizzle_dense", descriptionKey: "weather.drizzle_dense" },
-  61: { mainKey: "weather.rain_slight", descriptionKey: "weather.rain_slight" },
-  63: { mainKey: "weather.rain_moderate", descriptionKey: "weather.rain_moderate" },
-  65: { mainKey: "weather.rain_heavy", descriptionKey: "weather.rain_heavy" },
-  71: { mainKey: "weather.snowfall_slight", descriptionKey: "weather.snowfall_slight" },
-  73: { mainKey: "weather.snowfall_moderate", descriptionKey: "weather.snowfall_moderate" },
-  75: { mainKey: "weather.snowfall_heavy", descriptionKey: "weather.snowfall_heavy" },
-  80: { mainKey: "weather.rainShowers_slight", descriptionKey: "weather.rainShowers_slight" },
-  81: { mainKey: "weather.rainShowers_moderate", descriptionKey: "weather.rainShowers_moderate" },
-  82: { mainKey: "weather.rainShowers_violent", descriptionKey: "weather.rainShowers_violent" },
-  95: { mainKey: "weather.thunderstorm", descriptionKey: "weather.thunderstorm" },
-  96: { mainKey: "weather.thunderstorm_slightHail", descriptionKey: "weather.thunderstorm_slightHail" },
-  99: { mainKey: "weather.thunderstorm_heavyHail", descriptionKey: "weather.thunderstorm_heavyHail" },
+  2: { mainKey: "weather.partlyCloudy", descriptionKey: "weather.partlyCloudy.description" },
+  3: { mainKey: "weather.overcast", descriptionKey: "weather.overcast.description" },
+  45: { mainKey: "weather.fog", descriptionKey: "weather.fog.description" },
+  48: { mainKey: "weather.rimeFog", descriptionKey: "weather.rimeFog.description" },
+  51: { mainKey: "weather.drizzle.light", descriptionKey: "weather.drizzle.light.description" },
+  53: { mainKey: "weather.drizzle.moderate", descriptionKey: "weather.drizzle.moderate.description" },
+  55: { mainKey: "weather.drizzle.dense", descriptionKey: "weather.drizzle.dense.description" },
+  61: { mainKey: "weather.rain.slight", descriptionKey: "weather.rain.slight.description" },
+  63: { mainKey: "weather.rain.moderate", descriptionKey: "weather.rain.moderate.description" },
+  65: { mainKey: "weather.rain.heavy", descriptionKey: "weather.rain.heavy.description" },
+  71: { mainKey: "weather.snowfall.slight", descriptionKey: "weather.snowfall.slight.description" },
+  73: { mainKey: "weather.snowfall.moderate", descriptionKey: "weather.snowfall.moderate.description" },
+  75: { mainKey: "weather.snowfall.heavy", descriptionKey: "weather.snowfall.heavy.description" },
+  80: { mainKey: "weather.rainShowers.slight", descriptionKey: "weather.rainShowers.slight.description" },
+  81: { mainKey: "weather.rainShowers.moderate", descriptionKey: "weather.rainShowers.moderate.description" },
+  82: { mainKey: "weather.rainShowers.violent", descriptionKey: "weather.rainShowers.violent.description" },
+  95: { mainKey: "weather.thunderstorm", descriptionKey: "weather.thunderstorm.description" },
+  96: { mainKey: "weather.thunderstorm.slightHail", descriptionKey: "weather.thunderstorm.slightHail.description" },
+  99: { mainKey: "weather.thunderstorm.heavyHail", descriptionKey: "weather.thunderstorm.heavyHail.description" },
 };
 
 /**
@@ -38,6 +38,8 @@ export const parseWMOCode = (code: number): { main: string; description: string 
       description: i18next.t("weather.unknown_description"),
     };
   }
+
+  console.log(i18next.t(keys.descriptionKey))
   
   return {
     main: i18next.t(keys.mainKey),
