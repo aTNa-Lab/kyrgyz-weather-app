@@ -27,6 +27,8 @@ export const ForecastItemContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
+  text-align: center;
+  width: 120px;
   h6 {
     font-weight: 600;
     font-size: 1.125rem;
