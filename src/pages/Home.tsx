@@ -7,6 +7,7 @@ import Spinner from "../components/ui/Spinner/Spinner";
 import CurrentWeather from "../components/CurrentWeather/CurrentWeather";
 import { AppDispatch, AppStore } from "../store/store";
 import { fetchWeather } from "../store/fetchWeather";
+import Search from "../components/Search/Search";
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,8 +32,8 @@ const Home = () => {
   return (
     <>
       {loading && <Spinner />}
-      {/* <Header /> */}
-      {/* <Search /> */}
+      <Header />
+      <Search />
       <CurrentWeather />
       <Forecast />
       <Footer />

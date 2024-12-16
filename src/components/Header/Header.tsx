@@ -10,15 +10,16 @@ const Header: React.FC = () => {
   const isDarkMode = useSelector((state: AppStore) => state.app.darkMode);
 
   return (
-    <HeaderContainer>
-      <Title>React Weather</Title>
-      <HeaderIconsContainer>
-        {/* <DarkModeToggle checked={isDarkMode} onChange={() => dispatch(toggleDarkMode())} size={60} /> */}
-        <GithubLink href="http://www.github.com/esnz/reactweather">
-          {/* <GithubIcon /> */}
-        </GithubLink>
-      </HeaderIconsContainer>
-    </HeaderContainer>
+    <div style={{height: 48}}></div>
+    // <HeaderContainer>
+    //   <Title>React Weather</Title>
+    //   <HeaderIconsContainer>
+    //     <DarkModeToggle checked={isDarkMode} onChange={() => dispatch(toggleDarkMode())} size={60} />
+    //     <GithubLink href="http://www.github.com/esnz/reactweather">
+    //       <GithubIcon />
+    //     </GithubLink>
+    //   </HeaderIconsContainer>
+    // </HeaderContainer>
   );
 };
 
