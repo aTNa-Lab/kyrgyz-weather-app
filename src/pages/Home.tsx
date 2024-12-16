@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
 import Forecast from "../components/Forecast/Forecast";
 import Header from "../components/Header/Header";
-import Search from "../components/Search/Search";
 import Spinner from "../components/ui/Spinner/Spinner";
 import CurrentWeather from "../components/CurrentWeather/CurrentWeather";
-import { AppStore } from "../store/store";
+import { AppDispatch, AppStore } from "../store/store";
 import { fetchWeather } from "../store/fetchWeather";
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { loading } = useSelector((state: AppStore) => ({
     loading: state.app.isLoading,
   }));
@@ -32,7 +31,7 @@ const Home = () => {
   return (
     <>
       {loading && <Spinner />}
-      <Header />
+      {/* <Header /> */}
       {/* <Search /> */}
       <CurrentWeather />
       <Forecast />
