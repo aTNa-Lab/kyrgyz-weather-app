@@ -13,6 +13,7 @@ const resources = {
       humidity: "Humidity",
       wind: "Wind",
       pressure: "Pressure",
+      search_placeholder: "Search for location",
       days: {
         Sun: "Sun",
         Mon: "Mon",
@@ -78,6 +79,7 @@ const resources = {
       humidity: "Влажность",
       wind: "Ветер",
       pressure: "Давление",
+      search_placeholder: "Поиск местоположения",
       days: {
         Sun: "Воскр",
         Mon: "Пон",

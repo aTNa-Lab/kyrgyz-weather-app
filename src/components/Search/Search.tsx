@@ -15,6 +15,7 @@ import {
 import Suggestion from "./Suggestion";
 import { AppDispatch } from "../../store/store";
 import { LocationData } from "../../api/types";
+import { t } from "i18next";
 
 const Search: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -55,7 +56,7 @@ const Search: React.FC = () => {
         element={SearchInput}
         debounceTimeout={300}
         onChange={onSearchInputChanged}
-        placeholder="Search for location"
+        placeholder={t("search_placeholder")}
       />
       <LocationButton
         onClick={() => {
