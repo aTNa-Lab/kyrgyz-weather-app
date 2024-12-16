@@ -40,8 +40,8 @@ export type ExtendedForecastData = {
 
 export type LocationData = {
   name: string;
-  local_names: Map<string, string>
-  lat: number;
-  lon: number;
+  latitude: number;
+  longitude: number;
+  country_code: string;
   country: string;
 };

@@ -17,8 +17,8 @@ const Suggestion: React.FC<ISuggestionProps> = (props) => {
   const onClick = () => {
     dispatch(
       fetchWeather({
-        lat: props.item.lat,
-        lng: props.item.lon,
+        lat: props.item.latitude,
+        lng: props.item.longitude,
         name: props.item.name,
       })
     );

@@ -38,6 +38,10 @@ const Search: React.FC = () => {
 
   useClickOutside(suggestionRef, () => setShowSuggestions(false));
 
+  const onSearchInputClicked = () => {
+    setShowSuggestions(true);
+  };
+
   const onSearchInputChanged = (e: any) => {
     setSearchTerm(e.target.value);
   };
@@ -56,6 +60,7 @@ const Search: React.FC = () => {
         element={SearchInput}
         debounceTimeout={300}
         onChange={onSearchInputChanged}
+        onClick={onSearchInputClicked}
         placeholder={t("search_placeholder")}
       />
       <LocationButton
@@ -71,7 +76,7 @@ const Search: React.FC = () => {
       </LocationButton>
       {showSuggestions && (
         <SearchResult ref={suggestionRef}>
-          {suggestions?.slice(0, 6)?.map((s, i) => (
+          {suggestions?.map((s, i) => (
             <Suggestion
               key={i}
               label={`${s.name}, ${s.country}`}
