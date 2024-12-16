@@ -23,7 +23,7 @@ export type WeatherData = {
     sunset: number;
   };
   name: string;
-}
+};
 
 export type ExtendedForecastData = {
   day: string;
@@ -36,4 +36,12 @@ export type ExtendedForecastData = {
     main: string;
     description: string;
   };
-}
+};
+
+export type LocationData = {
+  name: string;
+  local_names: Map<string, string>
+  lat: number;
+  lon: number;
+  country: string;
+};

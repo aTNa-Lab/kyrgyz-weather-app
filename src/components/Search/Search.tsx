@@ -1,18 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { DebounceInput } from 'react-debounce-input';
-import { useDispatch } from 'react-redux';
-import { fetchWeather } from '../../store/fetchWeather';
-import { fetchCities } from './../../api/placeSuggestion';
-import { useClickOutside } from './../../hooks/useClickOutside';
-import { LocationButton, LocationIcon, SearchElement, SearchIcon, SearchInput, SearchResult } from './styled';
-import Suggestion from './Suggestion';
+import React, { useEffect, useRef, useState } from "react";
+import { DebounceInput } from "react-debounce-input";
+import { useDispatch } from "react-redux";
+import { fetchWeather } from "../../store/fetchWeather";
+import { fetchCities } from "./../../api/placeSuggestion";
+import { useClickOutside } from "./../../hooks/useClickOutside";
+import {
+  LocationButton,
+  LocationIcon,
+  SearchElement,
+  SearchIcon,
+  SearchInput,
+  SearchResult,
+} from "./styled";
+import Suggestion from "./Suggestion";
+import { AppDispatch } from "../../store/store";
+import { LocationData } from "../../api/types";
 
 const Search: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const suggestionRef = useRef(null);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<LocationData[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (!searchTerm) {
@@ -20,6 +29,8 @@ const Search: React.FC = () => {
     }
     setShowSuggestions(true);
     fetchCities(searchTerm).then((res) => {
+      console.log(res);
+
       setSuggestions(res);
     });
   }, [searchTerm]);
@@ -40,13 +51,18 @@ const Search: React.FC = () => {
   return (
     <SearchElement>
       <SearchIcon />
-      <DebounceInput element={SearchInput} debounceTimeout={300} onChange={onSearchInputChanged} placeholder="Search for location" />
+      <DebounceInput
+        element={SearchInput}
+        debounceTimeout={300}
+        onChange={onSearchInputChanged}
+        placeholder="Search for location"
+      />
       <LocationButton
         onClick={() => {
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
           } else {
-            alert('Geolocation is not supported by this browser.');
+            alert("Geolocation is not supported by this browser.");
           }
         }}
       >
@@ -57,7 +73,8 @@ const Search: React.FC = () => {
           {suggestions?.slice(0, 6)?.map((s, i) => (
             <Suggestion
               key={i}
-              label={s}
+              label={`${s.name}, ${s.country}`}
+              item={s}
               hideSuggestionFn={() => {
                 setShowSuggestions(false);
               }}

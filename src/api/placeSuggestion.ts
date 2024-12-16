@@ -1,19 +1,18 @@
-export const fetchCities = async (search: string) => {
-  const url = `https://places-dsn.algolia.net/1/places/query`;
-  const res = await (
-    await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        query: search,
-        type: 'city',
-        language: 'en',
-      }),
-    })
-  ).json();
+const apiKey = "97f31a80d4509fc3e9fe758442e1d361";
+const limit = 5;
 
-  return res.hits
-    .filter((item: any) => item.is_city)
-    .map((i: any) => {
-      return i.locale_names[0] + ', ' + i.country;
-    });
+export const fetchCities = async (search: string) => {
+  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=${limit}&appid=${apiKey}`;
+  
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error(`Error: ${res.status} ${res.statusText}`);
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch cities:", error);
+    return [];
+  }
 };
