@@ -55,14 +55,6 @@ const HourlyTemperatureChart: React.FC<HourlyTemperatureChartProps> = ({
     return value;
   };
 
-  const getDegreeSymbol = () => {
-    if (degreeType === TempUnit.FAHRENHEIT) {
-      return "°F";
-    } else {
-      return "°C";
-    }
-  };
-
   const chartData = {
     labels: data.map((d) => d.time),
     datasets: [
@@ -89,7 +81,7 @@ const HourlyTemperatureChart: React.FC<HourlyTemperatureChartProps> = ({
       datalabels: {
         display: true,
         align: "top" as const,
-        formatter: (value: number) => `${value} ${getDegreeSymbol()}`, // Show temperature value at points
+        formatter: (value: number) => value, // Show temperature value at points
       },
     },
     layout: {
