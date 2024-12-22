@@ -45,3 +45,8 @@ export type LocationData = {
   country_code: string;
   country: string;
 };
+
+export type HourlyForecastData = {
+  time: string,
+  temp: number,
+}

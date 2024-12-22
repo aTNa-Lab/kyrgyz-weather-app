@@ -4,7 +4,7 @@ import { parseWMOCode } from "./weatherCodeParser";
 const baseUrl = "https://api.open-meteo.com/v1/forecast";
 
 export const fetchWeatherData = async (
-  city: string | { lat: number; lng: number, name?: string }
+  city: string | { lat: number; lng: number; name?: string }
 ) => {
   let latitude: number, longitude: number;
 
@@ -29,7 +29,6 @@ export const fetchWeatherData = async (
       "wind_speed_10m",
     ],
     daily: ["temperature_2m_max", "temperature_2m_min"],
-    timezone: "auto",
     forecast_days: 1,
   };
 
@@ -40,7 +39,6 @@ export const fetchWeatherData = async (
     }
 
     const response = responses[0];
-    const utcOffsetSeconds = response.utcOffsetSeconds?.() || 0;
     const current = response.current()!;
     const daily = response.daily()!;
 
@@ -100,6 +98,8 @@ export const fetchExtendedForecastData = async (
     throw new Error("Geocoding not implemented. Provide coordinates.");
   }
 
+  console.log(latitude, longitude)
+
   const params = {
     latitude,
     longitude,
@@ -140,13 +140,72 @@ export const fetchExtendedForecastData = async (
       weather: {
         id: daily.variables(0)!.valuesArray()![index], // Weather code
         main: parseWMOCode(daily.variables(0)!.valuesArray()![index]).main, // Map weather code to human-readable text if needed
-        description: parseWMOCode(daily.variables(0)!.valuesArray()![index]).description, // Add detailed description if available
+        description: parseWMOCode(daily.variables(0)!.valuesArray()![index])
+          .description, // Add detailed description if available
       },
     }));
 
     return { list: forecast }; // Match the output structure used in `weather.ts`
   } catch (error) {
     console.error("Error fetching extended forecast data:", error);
+    throw error;
+  }
+};
+
+export const fetchHourlyForecastData = async (
+  city: string | { lat: number; lng: number }
+) => {
+  let latitude: number, longitude: number;
+
+  // Geocoding or direct coordinates
+  if (typeof city === "string") {
+    throw new Error("Geocoding not implemented. Provide coordinates.");
+  } else {
+    latitude = city.lat;
+    longitude = city.lng;
+  }
+
+  const params = {
+    latitude,
+    longitude,
+    hourly: ["temperature_2m"],
+    forecast_hours: 24,
+  };
+
+  try {
+    const responses = await fetchWeatherApi(baseUrl, params);
+    if (!responses || responses.length === 0) {
+      throw new Error("No weather data found");
+    }
+
+    const response = responses[0];
+    const utcOffsetSeconds = response.utcOffsetSeconds?.() || 0;
+    const hourly = response.hourly()!;
+
+    if (!hourly) {
+      throw new Error("Current weather data is missing");
+    }
+
+    const range = (start: number, stop: number, step: number) =>
+      Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
+
+    const hourlyTimeArray = range(
+      Number(hourly.time()),
+      Number(hourly.timeEnd()),
+      hourly.interval()
+    ).map((t) => new Date((t + utcOffsetSeconds) * 1000));
+
+    const hourlyForecast = hourlyTimeArray.map((date, index) => ({
+      time: date.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hourCycle: "h23",
+      }),
+      temp: Math.round(hourly.variables(0)!.valuesArray()![index]),
+    }));
+
+    return { hourly: hourlyForecast };
+  } catch (error) {
     throw error;
   }
 };
