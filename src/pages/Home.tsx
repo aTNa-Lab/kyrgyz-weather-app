@@ -8,6 +8,8 @@ import CurrentWeather from "../components/CurrentWeather/CurrentWeather";
 import { AppDispatch, AppStore } from "../store/store";
 import { fetchWeather } from "../store/fetchWeather";
 import Search from "../components/Search/Search";
+import PopularCities from "../components/PopularCities/PopularCities";
+import LanguageSelector from "../components/LanguageSelector/LanguageSelector";
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,7 +35,9 @@ const Home = () => {
     <>
       {loading && <Spinner />}
       <Header />
+      <LanguageSelector />
       <Search />
+      <PopularCities />
       <CurrentWeather />
       <Forecast />
       <Footer />
