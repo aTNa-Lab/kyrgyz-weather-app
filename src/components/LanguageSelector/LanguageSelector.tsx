@@ -18,12 +18,12 @@ const LanguageSelectorContainer = styled.div`
   z-index: 1000;
 `;
 
-const LanguageButton = styled.button<{ active: boolean }>`
+const LanguageButton = styled.button<{ $active: boolean }>`
   background: none;
   border: none;
-  color: ${(props) => (props.active ? "#007bff" : "#333")};
+  color: ${(props) => (props.$active ? "#007bff" : "#333")};
   cursor: pointer;
-  text-decoration: ${(props) => (props.active ? "underline" : "none")};
+  text-decoration: ${(props) => (props.$active ? "underline" : "none")};
   font-size: inherit;
   padding: 0;
   transition: color 0.3s ease;
@@ -48,21 +48,21 @@ const LanguageSelector = () => {
     <LanguageSelectorContainer>
       <LanguageButton
         onClick={() => handleLanguageChange("ky")}
-        active={i18n.language === "ky"}
+        $active={i18n.language === "ky"}
       >
         🇰🇬 ky
       </LanguageButton>
       <LanguageSeparator>/</LanguageSeparator>
       <LanguageButton
         onClick={() => handleLanguageChange("ru")}
-        active={i18n.language === "ru"}
+        $active={i18n.language === "ru"}
       >
         🇷🇺 ru
       </LanguageButton>
       <LanguageSeparator>/</LanguageSeparator>
       <LanguageButton
         onClick={() => handleLanguageChange("en")}
-        active={i18n.language === "en"}
+        $active={i18n.language === "en"}
       >
         🇬🇧 en
       </LanguageButton>
