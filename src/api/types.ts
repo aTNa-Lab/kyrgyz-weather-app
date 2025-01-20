@@ -50,3 +50,10 @@ export type HourlyForecastData = {
   time: string,
   temp: number,
 }
+
+export type CityData = {
+  name: string;
+  lat: number;
+  lng: number;
+  url: string;
+}
