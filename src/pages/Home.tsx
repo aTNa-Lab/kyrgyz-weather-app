@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
@@ -18,35 +18,24 @@ const Home = () => {
   const loading = useSelector((state: AppStore) => state.app.isLoading);
 
   const { city } = useParams<{ city: string }>();
+  const hasFetched = useRef(false); // Prevent duplicate fetch in Strict Mode
 
-  // Memoize the loadCityWeather function to prevent unnecessary re-creation
   const loadCityWeather = useCallback(() => {
     const cityKey = city?.toLowerCase() || "bishkek"; // Default to Bishkek if no city in URL
-    const cityData = popularCities[cityKey];
-
-    if (cityData) {
-      dispatch(
-        fetchWeather({
-          lat: cityData.lat,
-          lng: cityData.lng,
-          name: cityData.name,
-        })
-      );
-    } else {
-      console.warn(`City "${city}" not found. Falling back to Bishkek.`);
-      dispatch(
-        fetchWeather({
-          lat: 42.8746,
-          lng: 74.5698,
-          name: "Бишкек",
-        })
-      );
-    }
+    const cityData = popularCities[cityKey] ?? popularCities["bishkek"];
+    
+    dispatch(
+      fetchWeather({
+        lat: cityData.lat,
+        lng: cityData.lng,
+        name: cityData.name,
+      })
+    );
   }, [city, dispatch]);
 
-  // Ensure useEffect runs only when the `city` parameter changes
   useEffect(() => {
-    if (city !== undefined) {
+    if (!hasFetched.current) {
+      hasFetched.current = true; // Mark as fetched
       loadCityWeather();
     }
   }, [city, loadCityWeather]);

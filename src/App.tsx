@@ -12,9 +12,9 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <Home />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/city/:city" element={<Home />} />
         </Routes>
       </BrowserRouter>
