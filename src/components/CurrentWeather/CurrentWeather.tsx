@@ -26,13 +26,17 @@ import { useTranslation } from 'react-i18next';
 import HourlyTemperatureChart from './HourlyTemperatureChart';
 
 const CurrentWeather: React.FC = () => {
-  const { weather, hourly, degreeType, isInitial, isError } = useSelector((store: AppStore) => ({
-    weather: store.weather.weatherData,
-    hourly: store.weather.hourlyWeatherData,
-    degreeType: store.app.tempUnit,
-    isInitial: store.app.isInitial,
-    isError: store.weather.isError,
-  }));
+  const {
+    weatherData: weather,
+    hourlyWeatherData: hourly,
+    isError,
+  } = useSelector((store: AppStore) => store.weather);
+  
+  const {
+    tempUnit: degreeType,
+    isInitial,
+  } = useSelector((store: AppStore) => store.app);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,7 +45,7 @@ const CurrentWeather: React.FC = () => {
     }
   }, [isError]);
 
-  const {t} =  useTranslation();
+  const { t } = useTranslation();
 
   if (isInitial) return <></>;
 
@@ -106,7 +110,7 @@ const CurrentWeather: React.FC = () => {
           </InfoRow>
         </CurrentWeatherInfo>
       </CurrentWeatherContainer>
-      <HourlyTemperatureChart data={hourly} min={weather.main.temp_min} max={weather.main.temp_max}/>
+      <HourlyTemperatureChart data={hourly} min={weather.main.temp_min} max={weather.main.temp_max} />
     </WeatherContainer>
   );
 };

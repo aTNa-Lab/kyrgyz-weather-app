@@ -15,9 +15,7 @@ import { popularCities } from "../api/cities";
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { loading } = useSelector((state: AppStore) => ({
-    loading: state.app.isLoading,
-  }));
+  const loading = useSelector((state: AppStore) => state.app.isLoading);
 
   const { city } = useParams<{ city: string }>();
 

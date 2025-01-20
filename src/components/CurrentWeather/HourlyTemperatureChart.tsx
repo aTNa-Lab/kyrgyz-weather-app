@@ -39,9 +39,7 @@ const HourlyTemperatureChart: React.FC<HourlyTemperatureChartProps> = ({
   min,
   max,
 }) => {
-  const { degreeType } = useSelector((state: AppStore) => ({
-    degreeType: state.app.tempUnit,
-  }));
+  const degreeType = useSelector((state: AppStore) => state.app.tempUnit);
 
   const parseData = (data: HourlyForecastData[]) => {
     return data.map((d) => parseTemperature(d.temp));
