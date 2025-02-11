@@ -20,7 +20,7 @@ const Forecast: React.FC = () => {
         {forecast.map((item, i) => (
           <ForecastItem
             key={i}
-            day={item.day}
+            day={t(`days.${item.day}`)}
             high={item.temp.temp_max}
             low={item.temp.temp_min}
             weatherCode={item.weather.id}
