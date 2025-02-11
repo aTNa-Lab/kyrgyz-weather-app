@@ -12,12 +12,14 @@ import Search from "../components/Search/Search";
 import PopularCities from "../components/PopularCities/PopularCities";
 import LanguageSelector from "../components/LanguageSelector/LanguageSelector";
 import { popularCities } from "../api/cities";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
   const loading = useSelector((state: AppStore) => state.app.isLoading);
 
-  const { city } = useParams<{ city: string }>();
+  const { i18n } = useTranslation();
+  const { locale, city } = useParams<{ locale: string, city: string }>();
   const hasFetched = useRef(false); // Prevent duplicate fetch in Strict Mode
 
   const loadCityWeather = useCallback(() => {
@@ -32,6 +34,12 @@ const Home = () => {
       })
     );
   }, [city, dispatch]);
+
+  useEffect(() => {
+    if (locale && i18n.language !== locale) {
+      i18n.changeLanguage(locale); // Change language dynamically
+    }
+  }, [locale]);
 
   useEffect(() => {
     if (!hasFetched.current) {

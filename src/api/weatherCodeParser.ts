@@ -35,7 +35,7 @@ export const parseWMOCode = (code: number): { main: string; description: string 
   if (!keys) {
     return {
       main: i18next.t("weather.unknown"),
-      description: i18next.t("weather.unknown_description"),
+      description: i18next.t("weather.unknown.description"),
     };
   }
   

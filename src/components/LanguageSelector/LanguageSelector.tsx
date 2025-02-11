@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const LanguageSelectorContainer = styled.div`
@@ -38,9 +39,12 @@ const LanguageSeparator = styled.span`
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
+  const { city } = useParams<{ locale: string; city?: string }>();
+  const navigate = useNavigate();
 
   const handleLanguageChange = (language: string) => {
-    i18n.changeLanguage(language);
+    localStorage.setItem("userLanguage", language); // Save selected language
+    navigate(`/${language}${city ? `/city/${city}` : ""}`);
   };
 
   return (
