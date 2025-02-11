@@ -61,7 +61,7 @@ export const transformWeatherData = (
 
   res[1].list.forEach((i: any, index: number) => {
     forecast.push({
-      day: t(`days.${next7Days[index]}`),
+      day: next7Days[index],
       temp: {
         temp_max: i.temp.temp_max,
         temp_min: i.temp.temp_min,
