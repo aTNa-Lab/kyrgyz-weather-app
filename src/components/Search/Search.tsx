@@ -79,7 +79,7 @@ const Search: React.FC = () => {
           {suggestions?.map((s, i) => (
             <Suggestion
               key={i}
-              label={`${s.name}, ${s.country}`}
+              label={`${s.name}, ${s.country === "Киргизия" ? "Кыргызстан" : s.country}`}
               item={s}
               hideSuggestionFn={() => {
                 setShowSuggestions(false);
