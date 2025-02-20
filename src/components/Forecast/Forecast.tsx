@@ -24,8 +24,8 @@ const Forecast: React.FC = () => {
             high={item.temp.temp_max}
             low={item.temp.temp_min}
             weatherCode={item.weather.id}
-            main={item.weather.main}
-            description={item.weather.description}
+            main={t(item.weather.main)}
+            description={t(item.weather.description)}
           />
         ))}
       </ForecastItems>

@@ -34,13 +34,13 @@ export const parseWMOCode = (code: number): { main: string; description: string 
   const keys = WMOCodeKeys[code];
   if (!keys) {
     return {
-      main: i18next.t("weather.unknown"),
-      description: i18next.t("weather.unknown.description"),
+      main: "weather.unknown",
+      description: "weather.unknown.description",
     };
   }
   
   return {
-    main: i18next.t(keys.mainKey),
-    description: i18next.t(keys.descriptionKey),
+    main: keys.mainKey,
+    description: keys.descriptionKey,
   };
 };

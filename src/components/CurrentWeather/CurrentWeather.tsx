@@ -67,7 +67,7 @@ const CurrentWeather: React.FC = () => {
               <sup>&deg;</sup>
             </span>
           </div>
-          <h6>{weather.weather.description}</h6>
+          <h6>{t(weather.weather.description)}</h6>
         </CurrentWeatherStatus>
 
         <CurrentWeatherInfo>
