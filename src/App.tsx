@@ -13,7 +13,7 @@ const LanguageRedirect = () => {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("userLanguage") || "ky"; // Default to Kyrgyz
+    const savedLanguage = localStorage.getItem("userLanguage") || "ru";
     i18n.changeLanguage(savedLanguage);
     navigate(`/${savedLanguage}`, { replace: true });
   }, []);
