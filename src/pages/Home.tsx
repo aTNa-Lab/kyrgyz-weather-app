@@ -19,13 +19,13 @@ const Home = () => {
   const loading = useSelector((state: AppStore) => state.app.isLoading);
 
   const { i18n } = useTranslation();
-  const { locale, city } = useParams<{ locale: string, city: string }>();
+  const { locale, city } = useParams<{ locale: string; city: string }>();
   const hasFetched = useRef(false); // Prevent duplicate fetch in Strict Mode
 
   const loadCityWeather = useCallback(() => {
     const cityKey = city?.toLowerCase() || "bishkek"; // Default to Bishkek if no city in URL
     const cityData = popularCities[cityKey] ?? popularCities["bishkek"];
-    
+
     dispatch(
       fetchWeather({
         lat: cityData.lat,

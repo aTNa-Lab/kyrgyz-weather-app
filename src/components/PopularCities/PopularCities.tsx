@@ -53,6 +53,12 @@ const CardButton = styled.a`
   }
 `;
 
+const CardText = styled.h2`
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+`;
+
 const PopularCities = () => {
   const { locale } = useParams<{ locale: string }>();
 
@@ -60,7 +66,7 @@ const PopularCities = () => {
     <CardContainer>
       {Object.values(popularCities).map((city: CityData) => (
         <CardButton key={city.name} href={`/${locale}/city/${city.url}`}>
-          {city.name}
+          <CardText>{city.name}</CardText>
         </CardButton>
       ))}
     </CardContainer>

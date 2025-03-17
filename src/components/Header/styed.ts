@@ -10,6 +10,11 @@ export const Title = styled.h1`
   color: ${({ theme }) => theme.appTitleColor};
   font-size: 2.2rem;
 `;
+export const Subtitle = styled.h2`
+  color: ${({ theme }) => theme.panelTitleColor};
+  font-size: 1.2rem;
+  font-weight: 400;
+`;
 export const GithubLink = styled.a`
   margin-left: 1rem;
   svg {

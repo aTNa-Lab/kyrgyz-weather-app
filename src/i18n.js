@@ -23,6 +23,23 @@ const resources = {
         Fri: "Fri",
         Sat: "Sat",
       },
+      footer: {
+        item1: {
+          title: "Weather in Bishkek Today",
+          description:
+            "Find out the exact weather forecast for Bishkek today: temperature, humidity, wind, and precipitation. Keep track of weather changes in Kyrgyzstan and be prepared for any conditions!",
+        },
+        item2: {
+          title: "Weather Forecast in Kyrgyzstan",
+          description:
+            "The weather in Kyrgyzstan changes daily. Check the forecast for tomorrow, the week, and 10 days. Bishkek, Osh, Issyk-Kul — up-to-date data on temperature, precipitation, and wind.",
+        },
+        item3: {
+          title: "Climate and Seasonal Weather",
+          description:
+            "Weather in Bishkek and Kyrgyzstan by season: summer heat, autumn rains, winter frosts. Follow the forecast to know what weather awaits you today and tomorrow!",
+        },
+      },
       weather: {
         clear: "Clear",
         "clear.description": "Clear sky",
@@ -89,6 +106,23 @@ const resources = {
         Fri: "Пт",
         Sat: "Сб",
       },
+      footer: {
+        item1: {
+          title: "Погода в Бишкеке сегодня",
+          description:
+            "Узнайте точный прогноз погоды в Бишкеке на сегодня: температура, влажность, ветер и осадки. Следите за изменениями погоды в Кыргызстане и будьте готовы к любым условиям!",
+        },
+        item2: {
+          title: "Прогноз погоды в Кыргызстане",
+          description:
+            "Погода в Кыргызстане меняется ежедневно. Смотрите прогноз на завтра, неделю и 10 дней. Бишкек, Ош, Иссык-Куль — актуальные данные о температуре, осадках и ветре.",
+        },
+        item3: {
+          title: "Климат и сезонная погода",
+          description:
+            "Погода в Бишкеке и Кыргызстане по сезонам: летняя жара, осенние дожди, зимние морозы. Следите за прогнозом, чтобы знать, какая погода ждёт вас сегодня и завтра!",
+        },
+      },
       weather: {
         clear: "Ясно",
         "clear.description": "Ясное небо",
@@ -129,9 +163,11 @@ const resources = {
         thunderstorm: "Гроза",
         "thunderstorm.description": "Грозовая погода",
         "thunderstorm.slightHail": "Гроза, град",
-        "thunderstorm.slightHail.description": "Гроза с небольшим количеством града",
+        "thunderstorm.slightHail.description":
+          "Гроза с небольшим количеством града",
         "thunderstorm.heavyHail": "Гроза, сильн. град",
-        "thunderstorm.heavyHail.description": "Гроза с интенсивным выпадением града",
+        "thunderstorm.heavyHail.description":
+          "Гроза с интенсивным выпадением града",
         unknown: "Неизвестно",
         "unknown.description": "Неизвестное погодное условие",
       },
@@ -154,6 +190,23 @@ const resources = {
         Thu: "Бш",
         Fri: "Жм",
         Sat: "Иш",
+      },
+      footer: {
+        item1: {
+          title: "Бүгүн Бишкектеги аба ырайы",
+          description:
+            "Бүгүн Бишкектеги так аба ырайын билип алыңыз: температура, нымдуулук, шамал жана жаан-чачын. Кыргызстандагы аба ырайынын өзгөрүүлөрүн көзөмөлдөп, каалаган шарттарга даяр болуңуз!",
+        },
+        item2: {
+          title: "Кыргызстандагы аба ырайынын божомолу",
+          description:
+            "Кыргызстандагы аба ырайы күн сайын өзгөрүп турат. Эртеңкиге, жумага жана 10 күнгө болгон божомолду караңыз. Бишкек, Ош, Ысык-Көл — температура, жаан-чачын жана шамал боюнча актуалдуу маалыматтар.",
+        },
+        item3: {
+          title: "Климат жана сезондук аба ырайы",
+          description:
+            "Бишкек жана Кыргызстандагы аба ырайынын сезонго жараша өзгөрүшү: жайкы ысык, күзгү жаан, кышкы суук. Бүгүн жана эртең кандай аба ырайы күтүп жатканын билүү үчүн божомолду караңыз!",
+        },
       },
       weather: {
         clear: "Тунук",
@@ -195,9 +248,11 @@ const resources = {
         thunderstorm: "Чагылгандуу бороон",
         "thunderstorm.description": "Чагылгандуу шарттар",
         "thunderstorm.slightHail": "Чагылгандуу жана аз град",
-        "thunderstorm.slightHail.description": "Чагылгандуу, аз град түшкөн аба ырайы",
+        "thunderstorm.slightHail.description":
+          "Чагылгандуу, аз град түшкөн аба ырайы",
         "thunderstorm.heavyHail": "Чагылгандуу жана катуу град",
-        "thunderstorm.heavyHail.description": "Чагылгандуу жана көп град түшкөн аба ырайы",
+        "thunderstorm.heavyHail.description":
+          "Чагылгандуу жана көп град түшкөн аба ырайы",
         unknown: "Белгисиз",
         "unknown.description": "Белгисиз аба ырайынын шарттары",
       },

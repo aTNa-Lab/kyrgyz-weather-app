@@ -8,7 +8,7 @@ export const ForecastContainer = styled.div`
   padding: 1.5rem 2rem;
   overflow: hidden;
 `;
-export const SectionTitle = styled.h6`
+export const SectionTitle = styled.h3`
   font-weight: 500;
   font-size: 1.125rem;
   color: ${({ theme }) => theme.panelTitleColor};
@@ -38,6 +38,11 @@ export const ForecastItemContainer = styled.div`
     width: 4rem;
     height: 4rem;
     margin: 0.7rem 0;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #4a6fa1;
   }
   p {
     font-weight: 600;
