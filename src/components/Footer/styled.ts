@@ -1,8 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
   padding: 2rem 0;
   p {
     padding: 1rem 0;
@@ -15,14 +20,18 @@ export const FooterContainer = styled.footer`
   }
 `;
 
-export const FooterItemTitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #2f6f8a;
-`;
+export const FooterItem = styled.div`
+  padding-bottom: 1.5rem;
 
-export const FooterItemText = styled.h5`
-  font-size: 1rem;
-  color: #2f6f8a;
-  padding: 1rem 0;
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2f6f8a;
+  }
+
+  h5 {
+    font-size: 1rem;
+    color: #2f6f8a;
+    padding: 1rem 0;
+  }
 `;
