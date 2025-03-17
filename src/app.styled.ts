@@ -22,6 +22,8 @@ body {
   font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   min-height: 100vh;
   background: url(${({ theme }) => theme.backgroundImage}) no-repeat center 120%, linear-gradient(${({ theme }) =>
   theme.backgroundGradient.color1} 0%, ${({ theme }) => theme.backgroundGradient.color2} 100%);
