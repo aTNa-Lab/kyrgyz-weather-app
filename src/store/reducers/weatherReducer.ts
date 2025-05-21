@@ -53,7 +53,7 @@ const weatherSlice = createSlice({
         state.extendedWeatherData = res.forecast;
         state.hourlyWeatherData = res.hourly;
       })
-      .addCase(fetchWeather.rejected, (state, action) => {
+      .addCase(fetchWeather.rejected, (state) => {
         state.isError = true;
       });
   },

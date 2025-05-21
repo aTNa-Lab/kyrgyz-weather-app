@@ -1,5 +1,3 @@
-import i18next from 'i18next';
-
 // Define WMO codes with keys for internationalization
 const WMOCodeKeys: Record<number, { mainKey: string; descriptionKey: string }> = {
   0: { mainKey: "weather.clear", descriptionKey: "weather.clear.description" },

@@ -1,9 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ExtendedForecastData, HourlyForecastData, WeatherData } from "../api/types";
 import { getNextSevenDays } from "../utils/dateUtils";
-import { kelvinToCelcius } from "../utils/unitConversion";
 import { setIsInitial, setIsLoading } from "./reducers/appReducer";
-import { t } from "i18next";
 import {
   fetchWeatherData,
   fetchExtendedForecastData,
@@ -14,7 +12,7 @@ export const fetchWeather = createAsyncThunk(
   "weather/fetchWeather",
   async (
     city: { lat: number; lng: number; name?: string },
-    { dispatch, rejectWithValue, fulfillWithValue }
+    { dispatch, rejectWithValue }
   ) => {
     dispatch(setIsLoading(true));
 
